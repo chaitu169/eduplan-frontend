@@ -1,0 +1,16 @@
+.iform {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.iform div{
+    margin: 0.2%;
+    width: 30%;
+}
+
+.iform button{
+    margin: 0.3%;
+}

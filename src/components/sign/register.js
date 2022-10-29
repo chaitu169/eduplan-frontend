@@ -1,7 +1,8 @@
 import React , { useState } from "react";
-import {OutlinedInput , Input , Button} from "@mui/material";
+import {OutlinedInput , Input , Button } from "@mui/material";
 import config from "../../App";
-import {  Redirect } from "react-router-dom";
+import "./register.css";
+import {  redirect , Link} from "react-router-dom";
 
 export function RegisterS() {
     const [name , setName] = useState("");
@@ -80,22 +81,26 @@ export function RegisterS() {
     }
 
     return(
-        <>
-            <OutlinedInput value={name} placeholder="name" onChange={(e) => {
+        <div className="iform">
+            <OutlinedInput value={name} placeholder="student name" onChange={(e) => {
                 console.log(e.target.value);
                 setName(e.target.value);
             }}/>
-            <OutlinedInput value={mail} onChange={(e) => {
+            <OutlinedInput value={mail} placeholder="mail" onChange={(e) => {
                 setMail(e.target.value);
             }}/>
-            <OutlinedInput value={password} onChange={(e) => {
+            <OutlinedInput value={password} placeholder="password" onChange={(e) => {
                 setPassword(e.target.value);
             }}/>
             <Button variant="contained" onClick={() => {
                 console.log("regustering");
                 handleRegister();
             }}>Register</Button>
-        </>
+
+            <Link to={`/student/signin`}>
+                <p>Already have an account Log in</p>
+            </Link>
+        </div>
     )
 }
 
@@ -173,20 +178,24 @@ export function RegisterA() {
     }
 
     return(
-        <>
-            <OutlinedInput  value={club}  onChange={(e) => {
+        <div className="iform">
+            <OutlinedInput  value={club}  placeholder="club name" onChange={(e) => {
                 setClub(e.target.value);
             }}/>
-            <OutlinedInput  value={name} onChange={(e) => {
+            <OutlinedInput  value={name} placeholder="admin name" onChange={(e) => {
                 setName(e.target.value);
             }}/>
-            <OutlinedInput  value={mail} onChange={(e) => {
+            <OutlinedInput  value={mail} placeholder="mail-id" onChange={(e) => {
                 setMail(e.target.value);
             }}/>
-            <OutlinedInput  value={password} onChange={(e) => {
+            <OutlinedInput  value={password} placeholder="password" onChange={(e) => {
                 setPassword(e.target.value);
             }}/>
             <Button variant="contained" onSubmit={handleRegister}>Register</Button>
-        </>
+
+            <Link to={`/admin/signin`}>
+                <p>Already have an account Log in</p>
+            </Link>
+        </div>
     )
 }
