@@ -2,18 +2,20 @@ import React , { useEffect } from "react";
 import homeimg from "./home.png";
 import Grid from "@mui/material/Grid";
 import Button from '@mui/material/Button';
+import { Link } from "react-router-dom"
 import "./home.css";
 
 const Home = () => {
 
-    useEffect(() => {
-        (async () => {
-            let url = `https://eduplanbackenddeployement.herokuapp.com/`;
-            const res = await fetch(url);
-            const resp = await JSON.parse(res);
-            console.log(resp);
-        })();
-    });
+    //=========making a api call to test backend================
+    // useEffect(() => {
+    //     (async () => {
+    //         let url = `https://eduplanbackenddeployement.herokuapp.com/`;
+    //         const res = await fetch(url);
+    //         const resp = await JSON.parse(res);
+    //         console.log(resp);
+    //     })();
+    // });
 
     return (
         <Grid container spacing={2}>
@@ -28,8 +30,8 @@ const Home = () => {
                         <br />Are you
                     </p>
                     <div className="btns">
-                        <Button variant="contained">Student</Button>
-                        <Button variant="contained">Admin</Button>
+                        <Link to={`student/signup`}><Button variant="contained">Student</Button></Link>
+                        <Link to={`admin/signup`}><Button variant="contained">Admin</Button></Link>
                     </div>
             </Grid>
         </Grid>
