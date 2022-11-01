@@ -1,13 +1,23 @@
 import React , { useState } from "react";
-import {OutlinedInput , Input , Button } from "@mui/material";
-import config from "../../App";
+import {OutlinedInput , Button , Snackbar } from "@mui/material";
+import { config } from "../../App";
 import "./register.css";
-import {  redirect , Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Header from "../Header/header";
 
 export function RegisterS() {
     const [name , setName] = useState("");
     const [mail , setMail] = useState("");
     const [password , setPassword] = useState("");
+
+    const [open , setOpen] = useState(false);
+    const [messageInfo , setMessageInfo] = useState(undefined);
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+
+    let navigate = useNavigate();
 
     //input validation function before making an api call
     const validateInput = () => {
@@ -27,10 +37,12 @@ export function RegisterS() {
     const validateResponse = (isError , response) => {
         console.log("validate response function called");
         if(isError){
-            alert("something went wrong,try again");
+            setMessageInfo("Something went wrong");
+            setOpen(true);
             return false;
-        }else if(response.success === false){
-            alert(response.message);
+        }else if(response[0].success == 0){
+            setMessageInfo(response[0].message);
+            setOpen(true);
             return false;
         }else{
             return true;
@@ -40,7 +52,7 @@ export function RegisterS() {
     //performing an api cal using fetch api
     const performApiCall = async () => {
         console.log("api function called");
-        const url = config.endpoint + `student/signup`;
+        const url = config.endpoint + `signup/student`;
         try{
             let response = await fetch(url , {
                 method : "post",
@@ -75,12 +87,17 @@ export function RegisterS() {
                 setName("");
                 setMail("");
                 setPassword("");
-                alert("registration successfull,redirecting to login page");
+                setMessageInfo("registration successfull,redirecting to login page");
+                setOpen(true);
+                navigate(`/student/signin`);
             }
         }
     }
 
     return(
+        <>
+        <Snackbar open={open} onClose={handleClose} message={messageInfo ? messageInfo : undefined} autoHideDuration={3000}/>
+        <Header />
         <div className="iform">
             <OutlinedInput value={name} placeholder="student name" onChange={(e) => {
                 console.log(e.target.value);
@@ -101,6 +118,7 @@ export function RegisterS() {
                 <p>Already have an account Log in</p>
             </Link>
         </div>
+        </>
     )
 }
 
@@ -109,6 +127,16 @@ export function RegisterA() {
     const [name , setName] = useState("");
     const [mail , setMail] = useState("");
     const [password , setPassword] = useState("");
+    
+    const [open , setOpen] = useState(false);
+    const [messageInfo , setMessageInfo] = useState(undefined);
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+
+
+    let navigate = useNavigate();
 
     //input validation function before making an api call
     const validateInput = () => {
@@ -125,11 +153,14 @@ export function RegisterA() {
 
     //validating the response 
     const validateResponse = (isError , response) => {
+        console.log("validate response function called");
         if(isError){
-            alert("something went wrong,try again");
+            setMessageInfo("Something went wrong");
+            setOpen(true);
             return false;
-        }else if(response.success === false){
-            alert(response.message);
+        }else if(response[0].success == 0){
+            setMessageInfo(response[0].message);
+            setOpen(true);
             return false;
         }else{
             return true;
@@ -138,12 +169,12 @@ export function RegisterA() {
 
     //performing an api call to register admin
     const performApiCall = async () => {
-        const url = config.endpoint + `student/signup`;
+        const url = config.endpoint + `signup/admin`;
         try{
             let response = await fetch(url , {
                 method : "post",
                 body : JSON.stringify({
-                    "club" : club,
+                    "clubname" : club,
                     "name" : name,
                     "email" : mail,
                     "password" : password
@@ -165,6 +196,7 @@ export function RegisterA() {
 
     const handleRegister = async () => {
         let isInputValid = validateInput();
+        debugger;
         if(isInputValid === true){
             let response = await performApiCall();
             if(response !== undefined){
@@ -172,12 +204,16 @@ export function RegisterA() {
                 setName("");
                 setMail("");
                 setPassword("");
-                alert("registration successfull,redirecting to login page");
+                setMessageInfo("registration successfull,redirecting to login page");
+                navigate(`/admin/signin`);
             }
         }
     }
 
     return(
+        <>
+        <Snackbar open={open} onClose={handleClose} message={messageInfo ? messageInfo : undefined} autoHideDuration={3000}/>
+        <Header />
         <div className="iform">
             <OutlinedInput  value={club}  placeholder="club name" onChange={(e) => {
                 setClub(e.target.value);
@@ -191,11 +227,12 @@ export function RegisterA() {
             <OutlinedInput  value={password} placeholder="password" onChange={(e) => {
                 setPassword(e.target.value);
             }}/>
-            <Button variant="contained" onSubmit={handleRegister}>Register</Button>
+            <Button variant="contained" onClick={handleRegister}>Register</Button>
 
             <Link to={`/admin/signin`}>
                 <p>Already have an account Log in</p>
             </Link>
         </div>
+        </>
     )
 }

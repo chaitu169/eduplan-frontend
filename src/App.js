@@ -2,12 +2,14 @@ import Home from "./components/Home/home";
 import { BrowserRouter , Routes , Route} from "react-router-dom";
 import {RegisterS , RegisterA} from "./components/sign/register"
 import {LoginS , LoginA} from "./components/sign/login";
+import StudentClasses from "./components/studentClasses/StudentClasses";
+import Classes from "./components/Classes/classes";
 
 export const config = {
     endpoint : "https://eduplanbackenddeployement.herokuapp.com/",
 };
 
-function App() {
+export function App() {
   return (
     <BrowserRouter>
       <Routes>
@@ -15,6 +17,8 @@ function App() {
           <Route path="student/">
             <Route path="signup" element={<RegisterS />}/>
             <Route path="signin" element={<LoginS />} />
+            <Route path="classes" element={<Classes />}/>
+            <Route path="classes/:emailid" element={<StudentClasses />}/>
           </Route>
           <Route path="admin/">
             <Route path="signup" element={<RegisterA />}/>
@@ -25,4 +29,4 @@ function App() {
   );
 }
 
-export default App;
+

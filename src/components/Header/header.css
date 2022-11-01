@@ -1,5 +1,26 @@
 .header {
-    /* position: relative; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-action{
+    display: flex;
+    align-items: center;
+}
+
+.header-action button {
+    margin: 0 1em 0 0;
+}
+
+.header-action a{
+    margin-right: 0 3em 0 0;
+}
+
+.header-link {
+    padding: 0em 1em;
+    cursor: pointer;
+    color: #1890ff;
 }
 
 h3{
@@ -9,3 +30,4 @@ h3{
     font-style : 'italic';
     font-weight : bold;
 }
+
