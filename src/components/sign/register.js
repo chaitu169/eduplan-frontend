@@ -123,7 +123,7 @@ export function RegisterS() {
 }
 
 export function RegisterA() {
-    const [club , setClub] = useState("");
+    // const [club , setClub] = useState("");
     const [name , setName] = useState("");
     const [mail , setMail] = useState("");
     const [password , setPassword] = useState("");
@@ -140,7 +140,7 @@ export function RegisterA() {
 
     //input validation function before making an api call
     const validateInput = () => {
-        if(name.length == 0 || club.length == 0){
+        if(name.length == 0){
             alert("name should be atleast 2 characters");
             return false;
         }else if(password.length < 8){
@@ -174,7 +174,6 @@ export function RegisterA() {
             let response = await fetch(url , {
                 method : "post",
                 body : JSON.stringify({
-                    "clubname" : club,
                     "name" : name,
                     "email" : mail,
                     "password" : password
@@ -200,7 +199,6 @@ export function RegisterA() {
         if(isInputValid === true){
             let response = await performApiCall();
             if(response !== undefined){
-                setClub("");
                 setName("");
                 setMail("");
                 setPassword("");
@@ -215,9 +213,6 @@ export function RegisterA() {
         <Snackbar open={open} onClose={handleClose} message={messageInfo ? messageInfo : undefined} autoHideDuration={3000}/>
         <Header />
         <div className="iform">
-            <OutlinedInput  value={club}  placeholder="club name" onChange={(e) => {
-                setClub(e.target.value);
-            }}/>
             <OutlinedInput  value={name} placeholder="admin name" onChange={(e) => {
                 setName(e.target.value);
             }}/>

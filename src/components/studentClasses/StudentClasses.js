@@ -1,5 +1,5 @@
 import React , { useEffect , useState} from "react";
-import { Snackbar , Card } from "@mui/material";
+import { Snackbar , Card , Grid ,Button} from "@mui/material";
 import { useParams } from "react-router-dom";
 import { config } from "../../App";
 import Header from "../Header/header";
@@ -15,7 +15,8 @@ export default function StudentClasses() {
         setOpen(false);
     }
 
-    let {emailid} = useParams();
+    // let {emailid} = useParams();
+    let emailid = sessionStorage.getItem("email");
     const [mail , setMail] = useState(emailid);
 
     const handleResponse = (isError , json_response) => {
@@ -69,13 +70,27 @@ export default function StudentClasses() {
             <Header />
             {console.log(classes)}
             <Snackbar open={open} onClose={handleClose} message={messageInfo ? messageInfo : undefined} autoHideDuration={5000} />
-            <div className="clubs">
+            <Grid container className="clubs">
             {
                 classes.map((val) => {
-                    return <Card>{val}</Card>
+                    return (
+                        <Grid item xs={12} md={6} lg={4} key={val} className="club-name">
+                            <div className="card">
+                            <div  className="heading">
+                                {val}
+                            </div>
+                            <div className="description">
+                                This is a club created for learning and sharing information.
+                            </div>
+                            <Button variant="contained">
+                                Enter
+                            </Button>
+                            </div>
+                        </Grid>
+                    )
                 })
             }
-            </div>
+            </Grid>
         </div>
     )
 }

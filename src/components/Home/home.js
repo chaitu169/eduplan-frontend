@@ -1,7 +1,7 @@
 import React , { useEffect } from "react";
 import homeimg from "./home.png";
 import Grid from "@mui/material/Grid";
-import Button from '@mui/material/Button';
+import Header from "../Header/header";
 import { Link } from "react-router-dom"
 import "./home.css";
 
@@ -18,23 +18,24 @@ const Home = () => {
     // });
 
     return (
+        
         <Grid container spacing={2}>
             <Grid item xs={12} md={12} lg={6}>
                 <img src={homeimg} alt="home" />
             </Grid>
-            <Grid container item xs={12} md={12} lg={6} direction="column" justifyContent="center" alignItems="center">
+            <Grid item container xs={12} md={12} lg={6} className="rpage">
                     <h1>Welcome</h1>
                     <p className="paragraph">Eduplan connects college clubs and
                         students.Now,fasten your seat belt
                         to this amazing journey with us.
-                        <br />Are you
                     </p>
-                    <div className="btns">
-                        <Link to={`student/signup`}><Button variant="contained">Student</Button></Link>
-                        <Link to={`admin/signup`}><Button variant="contained">Admin</Button></Link>
+                    <div>
+                        <Link className="ltag" to={`student/signup`}>Student</Link>
+                        <Link className="ltag" to={`admin/signup`}>Admin</Link>
                     </div>
             </Grid>
         </Grid>
+      
     );
 }
 

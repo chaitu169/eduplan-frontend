@@ -1,13 +1,3 @@
-.clubs{
-    display: flex;
-    flex-direction: row;
-    margin: 0 10px 0 10px;
-    justify-content: space-evenly;
-}
 
-.clubs div{
-    width: 20%;
-    height: 150px;
-    text-align: center;
-    line-height: 130px;
-}
+
+

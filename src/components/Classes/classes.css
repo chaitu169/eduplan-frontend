@@ -1,14 +1,59 @@
-.clubs{
+.c-page{
     display: flex;
-    flex-direction: row;
-    flex-wrap : wrap;
-    margin: 0 10px 0 10px;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-.clubs div{
-    width: 20%;
-    height: 150px;
-    margin: 1% 1%;
-    text-align: center;
-    line-height: 130px;
+.clubs{  
+    max-width: 98%;
 }
+
+.club-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1%;
+}
+
+.card{
+    width: 70%;
+    border: 1px solid;
+    border-radius: 2%;
+    padding: 3%;
+    background-color: aliceblue;
+}
+
+.card:hover{
+    background-color: #B1B2FF;
+}
+
+.card div{
+    margin-bottom: 10%;
+}
+
+.card button{
+    background-color: rgb(150, 71, 71);
+}
+
+.card button:hover{
+    background-color :indigo
+}
+
+.card .heading{
+    font-size: larger;
+    font-weight: bold;
+}
+
+.card .description{
+    font-size: medium;
+}
+
+
+
+
+
+
+
+
+

@@ -1,33 +1,44 @@
 .header {
+    background-color: #D2DAFF;
+    /* background-color: #B1B2FF; */
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .header-action{
     display: flex;
     align-items: center;
-}
-
-.header-action button {
-    margin: 0 1em 0 0;
-}
-
-.header-action a{
-    margin-right: 0 3em 0 0;
-}
-
-.header-link {
-    padding: 0em 1em;
-    cursor: pointer;
-    color: #1890ff;
+    justify-content: space-around;
+    width: 25%;
 }
 
 h3{
-    position: relative;
-    left: 10px;
-    font-family : 'Averia Gruesa Libre';
-    font-style : 'italic';
-    font-weight : bold;
+    /* margin : 0; */
+    width: 10%;
+    text-align: center;
+    color: rgb(1, 16, 33);
+}
+
+.header-action button {
+    background-color: rgb(150, 71, 71);
+}
+
+.header-action button:hover{
+    background-color: indigo;
+}
+
+.header-link{
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(128, 0, 0);
+    border: 1px solid #9a763cbd;
+    border-radius: 2px;
+    padding: 1.9%;
+}
+
+.header-link:hover{
+    background-color: #9a763cbd;
 }
 

@@ -1,20 +1,46 @@
 img{
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
-h1 {
-    margin-bottom: 2%;
-}
-
-.paragraph {
-    text-align: center;
-    width: 50%;
-    margin: 0% 0% 1%;
-}
-
-.btns {
-    width: 60%;
+.rpage{
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-content: center;
 }
+
+.rpage h1{
+    width: 100%;
+    margin-bottom: 0;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.rpage p{
+    width: 60%;
+    display: block;
+    font-size: medium; 
+    font-weight: 400;
+}
+
+.rpage div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.ltag{
+    text-decoration: none;
+    margin-right: 1%;
+    border: 1px solid #9a763cbd;
+    border-radius: 5%;
+    color: rgb(128, 0, 0);
+    padding: 1%;
+}
+
+.ltag:hover{
+    background-color: #9a763cbd;
+}
+
+

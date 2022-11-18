@@ -78,9 +78,9 @@ export function LoginS() {
     };
 
     const persistLogin = (email , password) => {
-        const localstorage = window.localStorage;
-        localstorage.setItem('email' , email);
-        localstorage.setItem('password' , password);
+        sessionStorage.setItem('email' , email);
+        sessionStorage.setItem('password' , password);
+        sessionStorage.setItem('student' , true);
     }
 
     const handleLogin = async () => {
@@ -123,6 +123,7 @@ export function LoginS() {
 
 export function LoginA() {
 
+    let navigate = useNavigate();
     const [email , setEmail] = useState("");
     const [password , setPassword] = useState("");
     const [open , setOpen] = useState(false);
@@ -189,16 +190,24 @@ export function LoginA() {
         }
     };
 
+    const persistLogin = (email , password) => {
+        sessionStorage.setItem('email' , email);
+        sessionStorage.setItem('password' , password);
+        sessionStorage.setItem('admin', true);
+    }
+
     const handleLogin = async () => {
         console.log("login function called");
         let isInputValid = validateInput();
         if(isInputValid === true){
             let response = await performApiCall();
             if(response !== undefined){
+                persistLogin(email , password);
                 setEmail("");
                 setPassword("");
                 setMessageInfo("Login succesfull");
                 setOpen(true);
+                setTimeout(navigate(`/admin/adminui/`) , 3000);
             }
         }
     }
