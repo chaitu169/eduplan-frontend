@@ -96,7 +96,10 @@ export default function AdminUI() {
             });
 
             const json_response = await response.json();
-            hResClubDisplay(false , json_response);
+            const status = hResClubDisplay(false , json_response);
+            if(status){
+                setClasses(json_response);
+            }
             setOpen(true);
         } catch (error) {
             hResClubDisplay(true , null);

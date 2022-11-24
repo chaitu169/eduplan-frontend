@@ -97,7 +97,7 @@ export function LoginS() {
                 setPassword("");
                 setMessageInfo("Login successfull");
                 setOpen(true);
-                setTimeout(navigate(`/student/classes/${emailid}`) , 3000);
+                setTimeout(navigate(`/student/classes/user`) , 3000);
             }
         }
     }
@@ -221,7 +221,7 @@ export function LoginA() {
             <OutlinedInput placeholder="email" value={email} onChange={(e) => {
                 setEmail(e.target.value);
             }}/>
-            <OutlinedInput placeholder="password" value={password} onChange={(e) => {
+            <OutlinedInput placeholder="password" type="password" value={password} onChange={(e) => {
                 setPassword(e.target.value);
             }}/>
             <Button variant="contained" onClick={(e) => {

@@ -106,7 +106,7 @@ export function RegisterS() {
             <OutlinedInput value={mail} placeholder="mail" onChange={(e) => {
                 setMail(e.target.value);
             }}/>
-            <OutlinedInput value={password} placeholder="password" onChange={(e) => {
+            <OutlinedInput value={password} placeholder="password" type="password" onChange={(e) => {
                 setPassword(e.target.value);
             }}/>
             <Button variant="contained" onClick={() => {
@@ -219,7 +219,7 @@ export function RegisterA() {
             <OutlinedInput  value={mail} placeholder="mail-id" onChange={(e) => {
                 setMail(e.target.value);
             }}/>
-            <OutlinedInput  value={password} placeholder="password" onChange={(e) => {
+            <OutlinedInput  value={password} placeholder="password" type="password" onChange={(e) => {
                 setPassword(e.target.value);
             }}/>
             <Button variant="contained" onClick={handleRegister}>Register</Button>

@@ -5,6 +5,7 @@ import {LoginS , LoginA} from "./components/sign/login";
 import StudentClasses from "./components/studentClasses/StudentClasses";
 import Classes from "./components/Classes/classes";
 import AdminUI from "./components/AdminUI/adminui";
+import IclassUI from "./components/IclassUI/iclassui";
 
 export const config = {
     endpoint : "https://eduplanbackenddeployement.herokuapp.com/",
@@ -19,7 +20,8 @@ export function App() {
             <Route path="signup" element={<RegisterS />}/>
             <Route path="signin" element={<LoginS />} />
             <Route path="classes" element={<Classes />}/>
-            <Route path="classes/:emailid" element={<StudentClasses />}/>
+            <Route path="classes/user" element={<StudentClasses />}/>
+            <Route path="clubs/:classname" element={<IclassUI />}/>
           </Route>
           <Route path="admin/">
             <Route path="signup" element={<RegisterA />}/>

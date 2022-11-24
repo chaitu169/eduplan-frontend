@@ -40,7 +40,7 @@ function Header() {
                                 <Link className="header-link" to={"/student/classes"}>
                                     New
                                 </Link>
-                                <Link className="header-link" to={`/student/classes/${window.sessionStorage.getItem("email")}`}>
+                                <Link className="header-link" to={`/student/classes/user`}>
                                     My Classes
                                 </Link>
                                 <Button className="header-link" variant="contained" onClick={logOutS}>Log out</Button>
@@ -50,7 +50,7 @@ function Header() {
                         
                     )
                 }
-
+                                                                 
             </nav>
         </div>
     );
