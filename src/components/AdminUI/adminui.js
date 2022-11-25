@@ -3,11 +3,12 @@ import Header from "../Header/header";
 import { Snackbar, Button, Grid, OutlinedInput } from "@mui/material";
 import { config } from "../../App";
 import "../AdminUI/adminui.css";
-import { json } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminUI() {
 
     //state for displaying mentor's clubs
+    let navigate = useNavigate();
     const [classes, setClasses] = useState([]);
     const [open, setOpen] = useState(false);
     const [messageInfo, setMessageInfo] = useState(undefined);
@@ -114,6 +115,12 @@ export default function AdminUI() {
         getClasses();
     }, []);
 
+    const handleClick = (event) => {
+        // debugger;
+        let classname = event.currentTarget.childNodes[0].innerText;
+        navigate(`/admin/clubs/${classname}`);
+    }
+
     return (
         <div>
             <Snackbar open={open} onClose={handleClose} autoHideDuration={5000} message={messageInfo ? messageInfo : undefined} />
@@ -124,7 +131,9 @@ export default function AdminUI() {
                         classes.map((val) => {
                             return (
                                 <Grid item xs={12} md={6} lg={4} key={val.clubname} className="club-name">
-                                    <div className="card">
+                                    <div className="card" onClick={(event) => {
+                                handleClick(event);
+                            }}>
                                         <div className="heading" >
                                             {val.clubname}
                                         </div>
